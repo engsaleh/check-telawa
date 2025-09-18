@@ -19,20 +19,18 @@
 5. [المساهمة](#المساهمة)  
 
 ---
-
 ## الميزات
 
-- **اختيار السورة والآية:** قائمة منسدلة للسور (جزء عمّ) وحقل لإدخال رقم الآية.  
-- **عرض نص الآية:** يُعرض نص الآية المختار لتسهيل المراجعة قبل التلاوة.  
+- **تغذية راجعة مشجعة:** يقدم نص تقييم بسيط بناءً على دقة التلاوة.  
+- **اختيار السورة والآية:** قائمة منسدلة للسور (جزء عمّ) وحقل لإدخال رقم الآية.
 - **تحميل التسجيل الصوتي:** يدعم ملفات MP3, WAV, M4A, FLAC.  
 - **التعرف التلقائي على الكلام (ASR):** يستخدم نموذج Whisper العربي الخاص بالقرآن لتحويل التلاوة الصوتية إلى نص.  
 - **مقارنة النصوص:** يقارن النص المكتشف بالنص القرآني المرجعي.  
 - **تصحيح الأخطاء بصريًا:** يلون الكلمات الصحيحة والخاطئة والمحذوفة والمضافة لتسهيل تحديد الأخطاء.  
 - **مؤشر دقة التلاوة WER:** يعرض نسبة خطأ الكلمات (Word Error Rate).  
-- **تغذية راجعة مشجعة:** يقدم ملاحظات بسيطة بناءً على دقة التلاوة.  
+
 
 ---
-
 ## الإعداد والتشغيل
 
 ### المتطلبات الأساسية
@@ -41,11 +39,12 @@
 
 - **Python 3.8+**  
 - **pip** (مدير الحزم لبايثون)  
-- **FFmpeg**: لمعالجة الملفات الصوتية عبر مكتبة `pydub`.  
+- **FFmpeg**: لمعالجة الملفات الصوتية عبر مكتبة `pydub`.
+  - Windows: تحميل من [ffmpeg.org](https://ffmpeg.org/download.html) وإضافته للـ PATH  
   - Ubuntu/Debian: `sudo apt update && sudo apt install ffmpeg`  
   - Fedora: `sudo dnf install ffmpeg`  
   - macOS (Homebrew): `brew install ffmpeg`  
-  - Windows: تحميل من [ffmpeg.org](https://ffmpeg.org/download.html) وإضافته للـ PATH  
+  
 
 ---
 
@@ -53,11 +52,11 @@
 
 1. **استنساخ المستودع:**
 ```bash
-git clone https://github.com/YourUsername/QuranReciterChecker.git
+git clone https://github.com/YourUsername/check-telawa.git
 cd QuranReciterChecker
 ````
 
-*(غيّر `YourUsername/QuranReciterChecker` إلى المسار الفعلي لمستودعك)*
+ملاحظة: غيّر `YourUsername/check-telawa` إلى المسار الفعلي لمستودعك
 
 2. **إنشاء بيئة افتراضية وتفعيلها:**
 
@@ -75,7 +74,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-> **ملاحظة:** إذا كان لديك بطاقة NVIDIA وتريد تسريع التعرف على الكلام، قم بتثبيت `torch` مع دعم CUDA من [pytorch.org](https://pytorch.org/get-started/locally/) قبل تثبيت `transformers`.
+> **ملاحظة:** إذا كنت تستخدم بطاقة رسومية GUI من NVIDIA لتسريع التعرف على الكلام، ثبّت أولًا مكتبة torch مع دعم CUDA من [pytorch.org](https://pytorch.org/get-started/locally/) ثم ثبّت `transformers`.
 
 4. **تعيين مفتاح سري لتطبيق Flask:**
 
@@ -100,7 +99,7 @@ python app.py
 
 ## ملاحظات تقنية
 
-* **الواجهة الأمامية:** HTML, CSS, JavaScript (للتعامل مع API لجلب الآيات).
+* **الواجهة الأمامية:** HTML, CSS, JavaScript
 * **الواجهة الخلفية:** Python, Flask
 * **ASR:** مكتبة `transformers` ونموذج `tarteel-ai/whisper-base-ar-quran`
 * **معالجة الصوت:** `pydub` مع `ffmpeg`
